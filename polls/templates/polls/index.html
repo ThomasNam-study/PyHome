@@ -1,0 +1,15 @@
+{% if latest_question_list %}
+
+    <ul>
+        {% for q in latest_question_list %}
+
+            <li><a href = "/polls/{{ q.id }}">{{ q.question_text }}</a></li>
+
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+    <p>등록된 설문이 없습니다.</p>
+
+{% endif %}
