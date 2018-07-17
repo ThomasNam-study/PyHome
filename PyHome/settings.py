@@ -121,5 +121,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+"""LOGGING = {
+    'version': 1,
+    "handler": {
+        "console": {
+            "level": "DEBUG",
+            'class': "logging.StreamHandler"
+        }
+    },
+    'logging': {
+        "django": {
+            'handlers': ['console'],
+            'level': 'INFO'
+        }
+    }
+}"""
+
 #TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 

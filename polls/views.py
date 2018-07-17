@@ -1,11 +1,15 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django import forms
+
+import logging
 
 # Create your views here.
 from django.urls import reverse
 
 from polls.models import Question, Choice
 
+logger = logging.getLogger(__name__)
 
 def index(request):
 
@@ -41,3 +45,47 @@ def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
 
     return render(request, 'polls/results.html', {"question": question})
+
+class InputForm(forms.Form):
+    name = forms.CharField(label="Your name", max_length=100)
+
+
+def input(request):
+
+    if request.method == "POST":
+        form = InputForm(request.POST)
+
+        if form.is_valid():
+            new_name = form.cleaned_data["name"]
+
+            return HttpResponseRedirect(reverse("polls:input"))
+    else:
+        form = InputForm()
+
+    return render(request, "polls/input.html", {"form": form})
+
+
+class ContactForm (forms.Form):
+    subject = forms.CharField(label="제목", max_length=100)
+
+    message = forms.CharField(label="내용", widget=forms.Textarea)
+
+    sender = forms.EmailField()
+
+    cc_myself = forms.BooleanField(required=False)
+
+def contact(request):
+
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            subject = form.cleaned_data["subject"]
+
+            logger.debug(subject)
+
+            return HttpResponseRedirect(reverse("polls:contact"))
+    else:
+        form = ContactForm()
+
+    return render(request, "polls/contact.html", {"form": form})

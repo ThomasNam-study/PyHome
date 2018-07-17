@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
 {% if latest_question_list %}
 
     <ul>
@@ -13,3 +16,4 @@
     <p>등록된 설문이 없습니다.</p>
 
 {% endif %}
+{% endblock %}
