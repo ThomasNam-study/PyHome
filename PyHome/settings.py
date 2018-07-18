@@ -122,21 +122,30 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-"""LOGGING = {
+LOGGING = {
     'version': 1,
+    "disable_existing_loggers": False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%s"
+        }
+    },
     "handler": {
-        "console": {
+        "file": {
             "level": "DEBUG",
-            'class': "logging.StreamHandler"
+            'class': "logging.FileHandler",
+            "filename": os.path.join(BASE_DIR, 'logs/logfile'),
+            'formatter': "verbose"
         }
     },
     'logging': {
-        "django": {
-            'handlers': ['console'],
-            'level': 'INFO'
+        "polls": {
+            'handlers': ['file'],
+            'level': 'DEBUG'
         }
     }
-}"""
+}
 
 #TEMPLATE_DIRS = (os.path.join(BASE_DIR,  'templates'),)
 
