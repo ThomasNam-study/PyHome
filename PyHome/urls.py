@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from PyHome import views
+
 urlpatterns = [
-
+    path("", views.HomeView.as_view(), name="home"),
     path('polls/', include(('polls.urls', 'polls'), namespace="polls")),
-    path('admin/', admin.site.urls),
-
+    path('books/', include(('books.urls', 'books'), namespace="books")),
+    path('admin/', admin.site.urls)
 ]
