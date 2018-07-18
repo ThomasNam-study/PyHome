@@ -7,12 +7,11 @@ import logging
 # Create your views here.
 from django.urls import reverse
 
-from polls.models import Question, Choice
+from polls.models import Question, Choice, QuestionTest
 
 logger = logging.getLogger(__name__)
 
 def index(request):
-
     latest_question_list = Question.objects.all().order_by("-pub_date")[:5]
 
     context = {"latest_question_list": latest_question_list}

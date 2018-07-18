@@ -20,3 +20,14 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+class QuestionTest (models.Model):
+    subject = models.CharField(max_length=100)
+
+    context = models.TextField(max_length=6000)
+
+    inDate = models.DateField("등록 날짜")
+
+    def __str__(self):
+        return self.subject
+

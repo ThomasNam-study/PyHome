@@ -1,7 +1,8 @@
 from django.contrib import admin
 
 # Register your models here.
-from polls.models import Question, Choice
+from polls.models import Question, Choice, QuestionTest
+
 
 #class ChoiceInline(admin.StackedInline):
 class ChoiceInline(admin.TabularInline):
@@ -23,3 +24,4 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
+admin.site.register(QuestionTest)
