@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from books.models import Book, Author, Publisher
 
@@ -27,3 +27,13 @@ class PublisherList(ListView):
     model = Publisher
 
 
+class BookDetail(DetailView):
+    model = Book
+
+
+class AuthorDetail(DetailView):
+    model = Author
+
+
+class PublisherDetail(DetailView):
+    model = Publisher
